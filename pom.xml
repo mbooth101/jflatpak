@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.co.matbooth.jflatpak</groupId>
+  <artifactId>jflatpak</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>JFlatpak</name>
+  <description>Java tools for Flatpak</description>
+  <url>https://jflatpak.matbooth.co.uk</url>
+  <inceptionYear>2013</inceptionYear>
+
+  <organization>
+    <name>Red Hat</name>
+    <url>https://redhat.com/</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <name>Mat Booth</name>
+      <email>mat.booth@redhat.com</email>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Eclipse Public License v2.0</name>
+      <url>https://www.eclipse.org/legal/epl-v20.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <issueManagement>
+    <url>https://github.com/mbooth101/jflatpak/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+
+  <scm>
+    <url>https://github.com/mbooth101/jflatpak</url>
+    <connection>scm:git:https://github.com/mbooth101/jflatpak.git</connection>
+    <developerConnection>scm:git:git@github.com:mbooth101/jflatpak.git</developerConnection>
+  </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <modules>
+    <module>jflatpak-manifest</module>
+    <module>jflatpak-maven-plugin</module>
+    <module>jflatpak-gradle-plugin</module>
+  </modules>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

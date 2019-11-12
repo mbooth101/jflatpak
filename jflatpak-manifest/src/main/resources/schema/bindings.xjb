@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jaxb:bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc" version="2.1">
+  <jaxb:globalBindings generateIsSetMethod="false" fixedAttributeAsConstantProperty="true">
+  </jaxb:globalBindings>
+  <jaxb:bindings schemaLocation="flatpak-manifest.xsd">
+    <jaxb:bindings node="//xsd:complexType[@name='environment']">
+      <jaxb:class ref="uk.co.matbooth.jflatpak.manifest.Environment" />
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>

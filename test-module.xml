@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+  <name>module name</name>
+  <cmake>false</cmake>
+  <buildsystem>simple</buildsystem>
+  <build-options>
+    <cflags>a string</cflags>
+    <cflags-override>true</cflags-override>
+    <env>
+      <entry>
+        <key>CHEESE</key>
+        <value>beans</value>
+      </entry>
+      <entry>
+        <key>CAKE</key>
+        <value>pie</value>
+      </entry>
+    </env>
+    <build-args>one</build-args>
+    <build-args>two</build-args>
+    <build-args>three</build-args>
+    <arch>
+      <item>
+        <arch>arm</arch>
+        <build-options>
+          <cflags>a string</cflags>
+          <cflags-override>true</cflags-override>
+          <build-args>one</build-args>
+          <build-args>two</build-args>
+          <build-args>three</build-args>
+        </build-options>
+      </item>
+      <item>
+        <arch>x86_64</arch>
+        <build-options>
+          <cflags>a string</cflags>
+          <cflags-override>true</cflags-override>
+          <build-args>one</build-args>
+          <build-args>two</build-args>
+          <build-args>three</build-args>
+        </build-options>
+      </item>
+    </arch>
+  </build-options>
+  <modules>
+    <name>sub module name 1</name>
+    <cmake>false</cmake>
+    <buildsystem>simple</buildsystem>
+  </modules>
+  <modules>
+    <name>sub module name 2</name>
+    <cmake>false</cmake>
+    <buildsystem>simple</buildsystem>
+  </modules>
+</modules>

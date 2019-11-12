@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="archDict">
+    <xsd:sequence>
+      <xsd:element name="item" maxOccurs="unbounded" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="arch" type="archType" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="build-options" type="buildOptions" maxOccurs="1" minOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="extensionDict">
+    <xsd:sequence>
+      <xsd:element name="item" maxOccurs="unbounded" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="extension" type="extension" maxOccurs="1" minOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="archType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="aarch64"></xsd:enumeration>
+      <xsd:enumeration value="arm"></xsd:enumeration>
+      <xsd:enumeration value="i386"></xsd:enumeration>
+      <xsd:enumeration value="x86_64"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="buildSystemType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="autotools"></xsd:enumeration>
+      <xsd:enumeration value="cmake"></xsd:enumeration>
+      <xsd:enumeration value="cmake-ninja"></xsd:enumeration>
+      <xsd:enumeration value="meson"></xsd:enumeration>
+      <xsd:enumeration value="simple"></xsd:enumeration>
+      <xsd:enumeration value="qmake"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="sourceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="archive"></xsd:enumeration>
+      <xsd:enumeration value="git"></xsd:enumeration>
+      <xsd:enumeration value="bzr"></xsd:enumeration>
+      <xsd:enumeration value="svn"></xsd:enumeration>
+      <xsd:enumeration value="dir"></xsd:enumeration>
+      <xsd:enumeration value="file"></xsd:enumeration>
+      <xsd:enumeration value="script"></xsd:enumeration>
+      <xsd:enumeration value="shell"></xsd:enumeration>
+      <xsd:enumeration value="patch"></xsd:enumeration>
+      <xsd:enumeration value="extra-data"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="environment">
+    <xsd:sequence>
+      <xsd:element name="entry" maxOccurs="unbounded" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="key" type="xsd:string"></xsd:element>
+            <xsd:element name="value" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="buildOptions">
+    <xsd:sequence>
+      <xsd:element name="cflags" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cflags-override" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cppflags" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cppflags-override" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cxxflags" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cxxflags-override" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="ldflags" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="ldflags-override" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="append-path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="prepend-path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="append-ld-library-path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="prepend-ld-library-path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="append-pkg-config-path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="prepend-pkg-config-path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="prefix" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="libdir" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="env" type="environment" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="build-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="test-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="config-opts" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="make-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="make-install-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="strip" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="no-debuginfo" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="no-debuginfo-compression" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="arch" type="archDict" maxOccurs="1" minOccurs="0"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="source">
+    <xsd:sequence>
+      <xsd:element name="type" type="sourceType" maxOccurs="1" minOccurs="1"></xsd:element>
+      <xsd:element name="only-arches" type="archType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="skip-arches" type="archType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="dest" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="path" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="url" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="mirror-urls" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="git-init" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="md5" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="sha1" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="sha256" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="sha512" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="strip-components" type="xsd:integer" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="dest-filename" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="branch" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="tag" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="commit" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="disable-fsckobjects" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="disable-shallow-clone" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="revision" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="skip" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="commands" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="paths" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="use-git" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="use-git-am" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="options" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="filename" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="size" type="xsd:integer" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="installed-size" type="xsd:integer" maxOccurs="1" minOccurs="0"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="module">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="disabled" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="sources" type="source" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="config-opts" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="make-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="make-install-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="rm-configure" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="no-autogen" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="no-parallel-make" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="install-rule" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="no-make-install" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="no-python-timestamp-fix" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cmake" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="buildsystem" type="buildSystemType" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="builddir" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="subdir" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="build-options" type="buildOptions" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="build-commands" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="post-install" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="cleanup" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="ensure-writable" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="only-arches" type="archType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="skip-arches" type="archType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="cleanup-platform" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="run-tests" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="test-rule" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="test-commands" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="modules" type="module" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="extension">
+    <xsd:sequence>
+      <xsd:element name="directory" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="bundle" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="remove-after-build" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="manifest">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="app-id" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="branch" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="default-branch" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="collection-id" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="extension-tag" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="runtime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="runtime-version" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="sdk" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="var" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="metadata" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="command" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="build-runtime" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="build-extension" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="separate-locales" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="id-platform" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="metadata-platform" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="writable-sdk" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="appstream-compose" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="sdk-extensions" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="platform-extensions" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="base" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="base-version" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="base-extensions" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="inherit-extensions" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="inherit-sdk-extensions" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="tags" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="build-options" type="buildOptions" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="modules" type="module" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="add-extensions" type="extensionDict" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="add-build-extensions" type="extensionDict" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="cleanup" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="cleanup-commands" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="cleanup-platform" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="cleanup-platform-commands" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="prepare-platform-commands" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="finish-args" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      <xsd:element name="rename-desktop-file" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="rename-appdata-file" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="rename-icon" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="appdata-license" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="copy-icon" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="desktop-file-name-prefix" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      <xsd:element name="desktop-file-name-suffix" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="sources" type="source"></xsd:element>
+  <xsd:element name="modules" type="module"></xsd:element>
+  <xsd:element name="manifest" type="manifest"></xsd:element>
+
+</xsd:schema>
