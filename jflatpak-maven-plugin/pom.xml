@@ -37,8 +37,8 @@
     </dependency>
     <dependency>
       <groupId>org.apache.maven.shared</groupId>
-      <artifactId>maven-artifact-transfer</artifactId>
-      <version>0.11.0</version>
+      <artifactId>maven-invoker</artifactId>
+      <version>3.0.1</version>
     </dependency>
     <dependency>
       <groupId>uk.co.matbooth.jflatpak</groupId>
