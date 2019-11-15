@@ -12,6 +12,10 @@
   <name>JFlatpak Gradle Plug-in</name>
   <description>Helper tasks for dealing with Flatpak applications</description>
 
+  <properties>
+    <gradle.version>6.0</gradle.version>
+  </properties>
+
   <repositories>
     <repository>
       <id>gradle</id>
@@ -21,9 +25,40 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy</artifactId>
+      <version>2.5.8</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gradle</groupId>
+      <artifactId>gradle-base-services</artifactId>
+      <version>${gradle.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gradle</groupId>
+      <artifactId>gradle-core</artifactId>
+      <version>${gradle.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.gradle</groupId>
       <artifactId>gradle-core-api</artifactId>
-      <version>6.0</version>
+      <version>${gradle.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gradle</groupId>
+      <artifactId>gradle-logging</artifactId>
+      <version>${gradle.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gradle</groupId>
+      <artifactId>gradle-model-core</artifactId>
+      <version>${gradle.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>
